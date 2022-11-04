@@ -1,0 +1,13 @@
+extends layout
+block content
+  h1= title
+  -
+  -var result = [{"Jewels_name":"Sapphire.","Jewels_size":1,"Jewels_type":"Bracelets"},{"Jewels_name":"Emerald","Jewels_size":2,"Jewels_type":"Necklaces"},{"Jewels_name":"Garnet","Jewels_size":3,"Jewels_type":"Rings"}]
+  div.container-fluid
+     div.row
+        each item,index in result
+            div.col-sm-2(onclick=`buy(${index})`) Jewels_Name: #{item["Jewels_name"]}  <br>  Jewels_size: #{item["Jewels_size"]} <br> Jewels_type: #{item["Jewels_type"]} 
+  script.
+      function buy(index){
+         alert("you purchased item "+(index+1))
+      }

@@ -1,0 +1,31 @@
+{
+  "name": "f2wb30rali",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "mongodb": "^4.11.0",
+    "mongoose": "^6.7.1",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
+  },
+  "description": "[render server](https://f2wb30rali.onrender.com)",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ralishanmukhasrinivas/f2wb30rali.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ralishanmukhasrinivas/f2wb30rali/issues"
+  },
+  "homepage": "https://github.com/ralishanmukhasrinivas/f2wb30rali#readme"
+}
