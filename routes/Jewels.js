@@ -10,4 +10,5 @@ const Jewels_controlers= require('../controllers/Jewels');
 var router = express.Router();
 /* GET costumes */
 router.get('/', Jewels_controlers.Jewels_view_all_Page );
+router.get('/Jewels/:id', Jewels_controlers.Jewels_detail); 
 module.exports = router;
