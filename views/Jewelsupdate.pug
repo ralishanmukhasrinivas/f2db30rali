@@ -1,0 +1,42 @@
+extends layout
+block content
+  h1= title
+  if (toShow == null) 
+    h2 No instance to delete 
+  else      
+    - let Jewelsid = toShow._id
+    - let Jewels_type = toShow.Jewels_type
+    - let Jewels_name = toShow.Jewels_name
+    - let Jewels_size = toShow.Jewels_size
+    div.row(class='mb-2')
+        div.mr-1 ID is
+        div #{Jewelsid}
+    - let actionid = "/resource/Jewels/" + Jewelsid
+    form(id='JewelsForm', action= actionid, method="PUT")
+        div.form-group
+            label.JewelsAttr(for='Jewels_type') Jewels type
+            input#Jewels_type(type='text', name='Jewels_type', value= Jewels_type )
+        div.form-group
+            label.JewelsAttr(for='Jewels_size') Jewels size
+            input#Jewels_size(type='number', name='Jewels_size', value= Jewels_size )
+        div.form-group
+            label.JewelsAttr(for='Jewels_name') Jewels name
+            input#Jewels_name(type='text', name='Jewels_name', value= Jewels_name )
+        input(type="submit")
+    script.
+        document.forms['JewelsForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+        alert("Update succeded")
+        // TODO handle body
+        }).catch((error) => {
+        // TODO handle error
+        alert("Update failed " + error )
+        });
+        });

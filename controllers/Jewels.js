@@ -96,3 +96,67 @@ exports.Jewels_create_post = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
 }
+// Handle Jewels delete on DELETE.
+exports.Jewels_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await Jewels.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+// Handle a show one view with id specified by query
+exports.Jewels_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await Jewels.findById( req.query.id)
+    res.render('Jewelsdetail',
+    { title: 'Jewels Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+// Handle building the view for creating a Jewels.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.Jewels_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('Jewelscreate', { title: 'Jewels Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+// Handle building the view for updating a Jewels.
+// query provides the id
+exports.Jewels_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await Jewels.findById(req.query.id)
+    res.render('Jewelsupdate', { title: 'Jewels Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+// Handle a delete one view with id from query
+exports.Jewels_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await Jewels.findById(req.query.id)
+    res.render('Jewelsdelete', { title: 'Jewels Delete', toShow:
+    result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };

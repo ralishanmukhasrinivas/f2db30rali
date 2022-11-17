@@ -1,0 +1,23 @@
+extends layout
+block content
+  h1= title
+  if (toShow == null) 
+    h2 No instance to delete 
+  else    
+    - let Jewelsid = toShow._id
+    - let Jewels_type = toShow.Jewels_type
+    - let Jewels_size = toShow.Jewels_size
+    - let Jewels_name = toShow.Jewels_name
+    div
+    div.row
+    div(class='JewelsAttr mr-3') Jewels ID is:
+    div #{Jewelsid}
+    div.row
+    div(class='JewelsAttr mr-3') Jewels Type is:
+    div #{Jewels_type}
+    div.row
+    div(class='JewelsAttr mr-3') Jewels Size is:
+    div #{Jewels_size}
+    div.row
+    div(class='JewelsAttr mr-3') Jewels name is:
+    div #{Jewels_name}
